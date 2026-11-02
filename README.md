@@ -7,14 +7,21 @@ deck into a single static site (`dist/`), which GitHub Actions publishes to GitH
 ## Layout
 
 ```
+index.html               landing page served at the site root (hand-written, restyle it freely)
 slide/2026-10-31/        Mooncakes Out of the Oven (a 7-day event design for a mobile game)
   slides.md              the deck itself
   styles/deck.css        theme styles (imported early via setup/main.ts)
   setup/main.ts          Slidev setup entry
   public/images/         all images, referenced as /images/<file>
-scripts/build-pages.mjs  build every deck + generate the dist/index.html landing page
+scripts/build-pages.mjs  build every deck + assemble dist/
 .github/workflows/deploy.yml  deploy to GitHub Pages on push to main
 ```
+
+`index.html` is a plain static page with no JS. The build only replaces the
+`<!-- decks -->` marker inside `<ul class="decks">` with one `<li>` per deck
+(date, `title:` and `info:` from that deck's frontmatter), then writes the result to
+`dist/index.html` and `dist/404.html`. Keep the marker if you rework the markup, and feel free to
+change the styling — it is independent of any deck's theme.
 
 ## Local development
 
@@ -49,6 +56,11 @@ deploy.
 - Decks are built with `--router-mode hash`, so deep links look like
   `https://time1043.github.io/talks/2026-10-31/#/9` and never 404 under a subpath
 
-To add a talk, create `slide/<date>/` with a Slidev project (at least `slides.md`,
-`package.json`, `pnpm-lock.yaml`); after a push it appears on the landing page and at
-`/talks/<date>/`.
+To add a talk, create `slide/<date>/` with a Slidev project (at least `slides.md` and
+`package.json`) and push to `main` — the workflow installs, builds it, adds it to the landing page
+and publishes it at `/talks/<date>/` with no other change. Commit `pnpm-lock.yaml` as well when you
+have one, so CI installs with `--frozen-lockfile`; without a lockfile the build falls back to a
+plain install.
+
+The deck name in the URL is the directory name, so `slide/2027-03-08/` becomes
+`/talks/2027-03-08/`.

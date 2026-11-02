@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talks</title>
+<meta name="description" content="Slidev decks from past talks.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #1c2024;
+    --muted: #6b7280;
+    --line: #e5e7eb;
+    --card: #fafafa;
+    --accent: #2f6feb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1115;
+      --fg: #e8eaed;
+      --muted: #9aa4b2;
+      --line: #262b33;
+      --card: #161a20;
+      --accent: #6ea8ff;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: clamp(32px, 8vh, 96px) clamp(20px, 6vw, 72px);
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  }
+  main { max-width: 860px; margin: 0 auto; }
+  h1 { margin: 0 0 6px; font-size: 1.75em; letter-spacing: -0.01em; }
+  .sub { margin: 0 0 40px; color: var(--muted); font-size: 0.94em; }
+  .decks { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .decks a {
+    display: grid;
+    grid-template-columns: 8.5em 1fr;
+    gap: 2px 18px;
+    padding: 16px 20px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--card);
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .decks a:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .date { font: 0.82em/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--muted); }
+  .title { font-size: 1.1em; font-weight: 600; }
+  .info { grid-column: 2; color: var(--muted); font-size: 0.88em; }
+  footer { margin-top: 40px; font-size: 0.85em; color: var(--muted); }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Talks</h1>
+  <p class="sub">Slidev decks from past talks.</p>
+
+  <ul class="decks">
+    <!-- decks -->
+  </ul>
+
+  <footer>
+    Source: <a href="https://github.com/time1043/talks">github.com/time1043/talks</a>
+  </footer>
+</main>
+</body>
+</html>

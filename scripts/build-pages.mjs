@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Build every Slidev deck under slide/<name>/ into a single static site:
 //   dist/<name>/           one built deck per directory
-//   dist/index.html        landing page linking to all decks
+//   dist/index.html        the repository's index.html with the deck list injected
 //   dist/404.html          same landing page, so unknown paths still show the list
 //
 // Usage:
@@ -19,6 +19,9 @@
 import { execFileSync } from 'node:child_process'
 import { mkdir, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
+
+// Marker in the root index.html that is replaced with the generated deck list.
+const DECKS_MARKER = '<!-- decks -->'
 
 const root = resolve(import.meta.dirname, '..')
 const args = new Set(process.argv.slice(2))
@@ -53,7 +56,10 @@ async function readMeta(dir, name) {
   }
   const md = await readFile(entry, 'utf8')
   const frontmatter = /^---\n([\s\S]*?)\n---/.exec(md)?.[1] ?? ''
-  const pick = key => new RegExp(`^${key}:\\s*(.+)$`, 'm').exec(frontmatter)?.[1]?.trim()
+  const pick = key => new RegExp(`^${key}:\\s*(.+)$`, 'm').exec(frontmatter)?.[1]
+    ?.trim()
+    // drop optional surrounding quotes so titles survive YAML quoting
+    ?.replace(/^(['"])(.*)\1$/, '$2')
   return {
     name,
     dir,
@@ -78,56 +84,40 @@ await rm(outDir, { recursive: true, force: true })
 await mkdir(outDir, { recursive: true })
 
 for (const deck of decks) {
-  if (install)
-    run('pnpm', ['install', '--frozen-lockfile'], deck.dir)
+  if (install) {
+    // `--frozen-lockfile` keeps CI reproducible, but a brand-new deck may not
+    // have a lockfile yet — fall back to a normal install in that case.
+    const hasLockfile = await stat(join(deck.dir, 'pnpm-lock.yaml')).then(() => true, () => false)
+    run('pnpm', ['install', ...(hasLockfile ? ['--frozen-lockfile'] : [])], deck.dir)
+  }
   run('pnpm', ['exec', 'slidev', 'build', '--base', `${base}${deck.name}/`, '--router-mode', 'hash', '--out', join(outDir, deck.name)], deck.dir)
 }
 
-const cards = decks
-  .map(deck => `    <a class="card" href="${base}${deck.name}/">
-      <span class="date">${deck.name}</span>
-      <span class="title">${deck.title}</span>
-      <span class="info">${deck.info}</span>
-    </a>`)
+const escapeHtml = str => str
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+
+const items = decks
+  .map(deck => `    <li>
+      <a href="${base}${deck.name}/">
+        <span class="date">${deck.name}</span>
+        <span class="title">${escapeHtml(deck.title)}</span>
+        <span class="info">${escapeHtml(deck.info)}</span>
+      </a>
+    </li>`)
   .join('\n')
 
-const html = `<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Talks</title>
-<style>
-  :root { color-scheme: dark; }
-  body {
-    margin: 0; min-height: 100vh; box-sizing: border-box; padding: 10vh 8vw;
-    background: radial-gradient(120% 90% at 50% 0%, #2a1512 0%, #150b0b 45%, #0b0607 100%);
-    color: #f3e9d2; font-family: 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', system-ui, sans-serif;
-  }
-  h1 { font-family: 'STZhongsong', 'Noto Serif SC', serif; color: #f0b429; font-size: 2em; margin: 0 0 6px; }
-  p.sub { color: #c3b090; margin: 0 0 40px; font-size: .95em; letter-spacing: .04em; }
-  .list { display: flex; flex-direction: column; gap: 12px; max-width: 780px; }
-  .card {
-    display: grid; grid-template-columns: 8.5em 1fr; gap: 4px 18px; align-items: baseline;
-    padding: 18px 22px; text-decoration: none; color: inherit;
-    background: rgba(255, 205, 120, .055); border: 1px solid rgba(240, 180, 65, .26); border-radius: 12px;
-    transition: background .18s ease, border-color .18s ease, transform .18s ease;
-  }
-  .card:hover { background: rgba(255, 205, 120, .1); border-color: rgba(240, 180, 65, .55); transform: translateY(-2px); }
-  .date { font-family: Consolas, 'JetBrains Mono', monospace; color: #c3b090; font-size: .82em; }
-  .title { font-family: 'STZhongsong', 'Noto Serif SC', serif; color: #ffd166; font-size: 1.22em; }
-  .info { grid-column: 2; color: #c3b090; font-size: .86em; }
-</style>
-</head>
-<body>
-  <h1>Talks</h1>
-  <p class="sub">Slidev decks &middot; ${decks.length}</p>
-  <div class="list">
-${cards}
-  </div>
-</body>
-</html>
-`
+const templatePath = join(root, 'index.html')
+const template = await readFile(templatePath, 'utf8').catch(() => {
+  throw new Error(`Missing landing page template: ${templatePath}`)
+})
+
+if (!template.includes(DECKS_MARKER))
+  throw new Error(`index.html must contain the marker ${DECKS_MARKER}`)
+
+const html = template.replace(DECKS_MARKER, items.trim())
 
 await writeFile(join(outDir, 'index.html'), html)
 await writeFile(join(outDir, '404.html'), html)
