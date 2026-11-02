@@ -1,4 +1,4 @@
-/* 御牌坊 · 宫墙暗金主题 —— 与游戏界面视觉统一 */
+/* Imperial Bakery — dark palace-wall / antique-gold theme, aligned with the in-game UI */
 
 :root {
   --dy-bg: #1d0e0f;
@@ -13,7 +13,8 @@
 }
 
 .slidev-layout {
-  /* 极光位置变量：内容页主光偏右上，封面/分隔/大字页由类覆盖为居中 */
+  /* Aurora origin: content slides are lit from the upper right; the cover/divider/bigstage
+     layout classes recenter it. */
   --ax: 74%;
   --ay: 24%;
   position: relative;
@@ -25,7 +26,7 @@
   font-family: 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif;
 }
 
-/* ===== 极光光晕（antfu 式：一大片有布局的主光 + 暗角） ===== */
+/* ===== Aurora glow: one large, deliberately placed key light plus a vignette ===== */
 .slidev-layout.cover,
 .slidev-layout.divider,
 .slidev-layout.bigstage {
@@ -63,7 +64,7 @@
   background: radial-gradient(135% 115% at 50% 45%, transparent 52%, rgba(0, 0, 0, 0.55) 100%);
 }
 
-/* ===== 中秋月 ===== */
+/* ===== Mid-Autumn moon ===== */
 .dy-moon {
   position: absolute;
   top: 54px;
@@ -147,7 +148,7 @@
 
 .slidev-page-num { color: rgba(240, 180, 65, 0.55); }
 
-/* 顶部幕次标签 */
+/* Act label at the top of content slides */
 .kicker {
   font-size: 0.78em;
   letter-spacing: 0.28em;
@@ -160,7 +161,7 @@
   background: rgba(240, 180, 65, 0.06);
 }
 
-/* 印章 */
+/* Seal stamp */
 .seal {
   display: inline-block;
   background: var(--dy-red);
@@ -174,7 +175,7 @@
   letter-spacing: 0.15em;
 }
 
-/* 盖章：盖棺定论 */
+/* Verdict stamp, stamped over a rejected iteration */
 .dy-stamp {
   display: inline-block;
   border: 4px solid rgba(201, 64, 47, 0.82);
@@ -190,7 +191,7 @@
   background: rgba(243, 233, 210, 0.06);
 }
 
-/* ===== 机制星云：词如星辰散落 ===== */
+/* ===== Mechanic constellation: keywords scattered like stars ===== */
 .sky {
   position: relative;
   height: 275px;
@@ -226,7 +227,7 @@
   to   { opacity: var(--o2, 0.5); transform: translate(3px, -4px); }
 }
 
-/* ===== 图片框（细金边 + 深底） ===== */
+/* ===== Screenshot frame: thin gold border on a dark backdrop ===== */
 .film {
   background: #0a0608;
   border-radius: 12px;
@@ -236,7 +237,7 @@
 }
 .film img { display: block; width: 100%; }
 
-/* ===== 画廊画框 ===== */
+/* ===== Gallery frame ===== */
 .g-art {
   background: #f3ead7;
   padding: 8px;
@@ -255,7 +256,7 @@
   letter-spacing: 0.1em;
 }
 
-/* ===== 大字页 ===== */
+/* ===== Big-statement slide ===== */
 .bigstage {
   align-items: flex-start;
   height: 100%;
@@ -277,7 +278,7 @@
   opacity: 0.85;
 }
 
-/* ===== 目录行 ===== */
+/* ===== Agenda rows ===== */
 .agenda-row {
   display: flex;
   align-items: baseline;
@@ -302,7 +303,7 @@
   font-size: 0.95em;
 }
 
-/* ===== 感悟 ===== */
+/* ===== Takeaways ===== */
 .refl { display: flex; gap: 24px; align-items: baseline; margin-top: 30px; }
 .refl-no {
   font-family: 'STZhongsong', 'KaiTi', serif;
@@ -318,7 +319,7 @@
 }
 .refl-note { display: block; font-family: 'Microsoft YaHei', sans-serif; font-size: 0.62em; color: var(--dy-muted); margin-top: 4px; letter-spacing: 0.02em; }
 
-/* 图注 */
+/* Image caption */
 .dy-shotcap {
   font-size: 0.75em;
   color: var(--dy-muted);
@@ -326,7 +327,7 @@
   text-align: center;
 }
 
-/* 七日节奏柱状图 */
+/* Seven-day pacing bar chart */
 .bars { display: flex; align-items: flex-end; gap: 14px; height: 190px; padding-top: 26px; }
 .bar-col { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; flex: 1; height: 100%; min-width: 0; }
 .bar-val { font-size: 0.68em; color: var(--dy-muted); margin-bottom: 3px; white-space: nowrap; }
@@ -346,15 +347,15 @@
 .dy-ok { color: var(--dy-green); }
 .dy-bad { color: #e88a76; }
 
-/* SKU 表：固定列宽防折行 */
+/* SKU table: fixed column widths so cells never wrap */
 .slidev-page .sku table { table-layout: fixed; }
 .slidev-page .sku th:first-child, .slidev-page .sku td:first-child { width: 23%; }
 .slidev-page .sku th:nth-child(2), .slidev-page .sku td:nth-child(2) { width: 11%; white-space: nowrap; }
 
-/* 紧凑表格页 */
+/* Compact table slide */
 .slidev-page .compact th, .slidev-page .compact td { padding: 3px 9px; }
 
-/* ===== 幕间大字过渡页 ===== */
+/* ===== Act divider slide ===== */
 .slidev-layout.divider {
   display: flex;
   flex-direction: column;

@@ -1,5 +1,7 @@
 import '../styles/deck.css'
 
 export default function main() {
-  // 全局样式在 ../styles/deck.css 中提前注入（先于主题样式，保持与既有版本一致的层叠顺序）
+  // Global styles are injected from ../styles/deck.css, early enough to load
+  // before the theme (Slidev's auto-loaded stylesheet loads after it and would
+  // otherwise win ties, changing the reviewed layout).
 }
