@@ -1,0 +1,427 @@
+/* 御牌坊 · 宫墙暗金主题 —— 与游戏界面视觉统一 */
+
+:root {
+  --dy-bg: #1d0e0f;
+  --dy-gold: #f0b429;
+  --dy-gold-hi: #ffd166;
+  --dy-cream: #f3e9d2;
+  --dy-muted: #c3b090;
+  --dy-red: #c9402f;
+  --dy-green: #8fd08f;
+  --dy-line: rgba(240, 180, 65, 0.26);
+  --slidev-theme-primary: #f0b429;
+}
+
+.slidev-layout {
+  /* 极光位置变量：内容页主光偏右上，封面/分隔/大字页由类覆盖为居中 */
+  --ax: 74%;
+  --ay: 24%;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(130% 100% at var(--ax) var(--ay), rgba(236, 178, 88, 0.05), transparent 55%),
+    linear-gradient(165deg, #180c0d 0%, #110a0a 55%, #0d0708 100%);
+  color: var(--dy-cream);
+  font-family: 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif;
+}
+
+/* ===== 极光光晕（antfu 式：一大片有布局的主光 + 暗角） ===== */
+.slidev-layout.cover,
+.slidev-layout.divider,
+.slidev-layout.bigstage {
+  --ax: 50%;
+  --ay: 58%;
+}
+.slidev-layout::before {
+  content: "";
+  position: absolute;
+  inset: -25%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(46% 60% at var(--ax) var(--ay), rgba(240, 180, 65, 0.15), transparent 66%),
+    radial-gradient(30% 44% at calc(100% - var(--ax)) calc(100% - var(--ay)), rgba(190, 64, 42, 0.11), transparent 68%),
+    radial-gradient(16% 20% at 24% 16%, rgba(243, 233, 210, 0.05), transparent 70%);
+  animation: dy-aurora 38s ease-in-out infinite alternate;
+}
+@keyframes dy-aurora {
+  0% {
+    transform: translate3d(-2.5%, -1.5%, 0) scale(1) rotate(-1.5deg);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(2.5%, 2%, 0) scale(1.14) rotate(1.5deg);
+    opacity: 1;
+  }
+}
+.slidev-layout::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(135% 115% at 50% 45%, transparent 52%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+/* ===== 中秋月 ===== */
+.dy-moon {
+  position: absolute;
+  top: 54px;
+  right: 150px;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 36% 34%, #fff8e2 0%, #f7dfa0 45%, #e9bd5e 78%, #d9a44a 100%);
+  box-shadow:
+    0 0 30px 8px rgba(247, 223, 160, 0.35),
+    0 0 90px 26px rgba(247, 223, 160, 0.13);
+  animation: dy-moon 10s ease-in-out infinite alternate;
+}
+.dy-moon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(18% 16% at 30% 40%, rgba(180, 140, 60, 0.35), transparent 70%),
+    radial-gradient(14% 12% at 62% 60%, rgba(180, 140, 60, 0.3), transparent 70%),
+    radial-gradient(10% 10% at 48% 26%, rgba(180, 140, 60, 0.25), transparent 70%);
+}
+@keyframes dy-moon {
+  from { transform: translateY(-6px); }
+  to   { transform: translateY(8px); }
+}
+.dy-cloud {
+  position: absolute;
+  top: 88px;
+  right: 56px;
+  width: 200px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(243, 233, 210, 0.07);
+  filter: blur(6px);
+  animation: dy-cloud 30s linear infinite;
+}
+@keyframes dy-cloud {
+  0%   { transform: translateX(140px); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateX(-180px); opacity: 0; }
+}
+
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3 {
+  font-family: 'STZhongsong', 'Noto Serif SC', 'Source Han Serif SC', 'KaiTi', 'SimSun', serif;
+  color: var(--dy-gold);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.slidev-layout h1 { font-size: 2em; margin-bottom: 0.35em; }
+.slidev-layout h2 { font-size: 1.35em; }
+.slidev-layout p, .slidev-layout li { color: var(--dy-cream); }
+
+.slidev-layout a { color: var(--dy-gold-hi); }
+
+.slidev-layout strong { color: var(--dy-gold-hi); font-weight: 600; }
+
+.slidev-page .slidev-layout table {
+  width: 100%;
+  font-size: 0.82em;
+  border-collapse: collapse;
+}
+.slidev-page .slidev-layout th {
+  color: var(--dy-gold);
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 1px solid var(--dy-line);
+  padding: 5px 9px;
+}
+.slidev-page .slidev-layout td {
+  border-bottom: 1px solid rgba(240, 180, 65, 0.12);
+  padding: 6px 9px;
+  vertical-align: top;
+}
+.slidev-page .slidev-layout tr:last-child td { border-bottom: none; }
+
+.slidev-page-num { color: rgba(240, 180, 65, 0.55); }
+
+/* 顶部幕次标签 */
+.kicker {
+  font-size: 0.78em;
+  letter-spacing: 0.28em;
+  color: var(--dy-gold);
+  border: 1px solid var(--dy-line);
+  border-radius: 999px;
+  display: inline-block;
+  padding: 3px 14px;
+  margin-bottom: 18px;
+  background: rgba(240, 180, 65, 0.06);
+}
+
+/* 印章 */
+.seal {
+  display: inline-block;
+  background: var(--dy-red);
+  color: #ffe3c8;
+  font-family: 'KaiTi', 'STKaiti', 'Noto Serif SC', serif;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transform: rotate(-7deg);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  letter-spacing: 0.15em;
+}
+
+/* 盖章：盖棺定论 */
+.dy-stamp {
+  display: inline-block;
+  border: 4px solid rgba(201, 64, 47, 0.82);
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 2px rgba(201, 64, 47, 0.32);
+  color: rgba(201, 64, 47, 0.88);
+  font-family: 'STZhongsong', 'KaiTi', serif;
+  font-weight: 700;
+  font-size: 1.3em;
+  letter-spacing: 0.1em;
+  padding: 8px 18px;
+  transform: rotate(-8deg);
+  background: rgba(243, 233, 210, 0.06);
+}
+
+/* ===== 机制星云：词如星辰散落 ===== */
+.sky {
+  position: relative;
+  height: 275px;
+  margin-top: 4px;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 18%, rgba(255, 240, 200, 0.65), transparent 60%),
+    radial-gradient(1px 1px at 34% 55%, rgba(255, 240, 200, 0.45), transparent 60%),
+    radial-gradient(1.5px 1.5px at 55% 28%, rgba(255, 240, 200, 0.5), transparent 60%),
+    radial-gradient(1px 1px at 70% 68%, rgba(255, 240, 200, 0.4), transparent 60%),
+    radial-gradient(1.5px 1.5px at 86% 22%, rgba(255, 240, 200, 0.55), transparent 60%),
+    radial-gradient(1px 1px at 45% 88%, rgba(255, 240, 200, 0.35), transparent 60%),
+    radial-gradient(1px 1px at 92% 76%, rgba(255, 240, 200, 0.4), transparent 60%),
+    radial-gradient(1px 1px at 6% 62%, rgba(255, 240, 200, 0.4), transparent 60%);
+}
+.sky .w {
+  position: absolute;
+  font-family: 'STZhongsong', 'KaiTi', serif;
+  color: var(--dy-gold-hi);
+  text-shadow: 0 0 16px rgba(240, 180, 65, 0.5), 0 0 2px rgba(255, 240, 200, 0.6);
+  white-space: nowrap;
+  animation: dy-star 5.5s ease-in-out infinite alternate;
+}
+.sky .w.dim {
+  color: var(--dy-cream);
+  text-shadow: 0 0 8px rgba(243, 233, 210, 0.22);
+}
+.sky .w.hot {
+  color: #e88a76;
+  text-shadow: 0 0 20px rgba(201, 64, 47, 0.6), 0 0 2px rgba(255, 200, 180, 0.5);
+}
+@keyframes dy-star {
+  from { opacity: var(--o1, 0.95); transform: translate(0, 0); }
+  to   { opacity: var(--o2, 0.5); transform: translate(3px, -4px); }
+}
+
+/* ===== 图片框（细金边 + 深底） ===== */
+.film {
+  background: #0a0608;
+  border-radius: 12px;
+  border: 1px solid var(--dy-line);
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+}
+.film img { display: block; width: 100%; }
+
+/* ===== 画廊画框 ===== */
+.g-art {
+  background: #f3ead7;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.68), 0 0 0 1px rgba(0, 0, 0, 0.55);
+  display: inline-block;
+}
+.g-art img { display: block; }
+
+.g-cap {
+  margin-top: 12px;
+  text-align: center;
+  font-family: 'STZhongsong', 'KaiTi', serif;
+  color: var(--dy-gold-hi);
+  font-size: 1.02em;
+  letter-spacing: 0.1em;
+}
+
+/* ===== 大字页 ===== */
+.bigstage {
+  align-items: flex-start;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.stage-huge {
+  font-family: 'STZhongsong', 'KaiTi', serif;
+  font-size: 3em;
+  color: var(--dy-gold);
+  line-height: 1.55;
+  font-weight: 700;
+}
+.stage-sub {
+  margin-top: 18px;
+  font-size: 1.05em;
+  color: var(--dy-cream);
+  opacity: 0.85;
+}
+
+/* ===== 目录行 ===== */
+.agenda-row {
+  display: flex;
+  align-items: baseline;
+  gap: 26px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(240, 180, 65, 0.12);
+}
+.agenda-no {
+  font-family: 'STZhongsong', 'KaiTi', serif;
+  font-size: 2.1em;
+  color: var(--dy-gold);
+  min-width: 1.2em;
+}
+.agenda-title {
+  font-family: 'STZhongsong', 'KaiTi', serif;
+  font-size: 1.55em;
+  color: var(--dy-cream);
+}
+.agenda-note {
+  margin-left: auto;
+  color: var(--dy-muted);
+  font-size: 0.95em;
+}
+
+/* ===== 感悟 ===== */
+.refl { display: flex; gap: 24px; align-items: baseline; margin-top: 30px; }
+.refl-no {
+  font-family: 'STZhongsong', 'KaiTi', serif;
+  font-size: 1.8em;
+  color: var(--dy-gold);
+  min-width: 1.1em;
+}
+.refl-text {
+  font-family: 'STZhongsong', 'KaiTi', serif;
+  font-size: 1.42em;
+  color: var(--dy-cream);
+  line-height: 1.55;
+}
+.refl-note { display: block; font-family: 'Microsoft YaHei', sans-serif; font-size: 0.62em; color: var(--dy-muted); margin-top: 4px; letter-spacing: 0.02em; }
+
+/* 图注 */
+.dy-shotcap {
+  font-size: 0.75em;
+  color: var(--dy-muted);
+  margin-top: 6px;
+  text-align: center;
+}
+
+/* 七日节奏柱状图 */
+.bars { display: flex; align-items: flex-end; gap: 14px; height: 190px; padding-top: 26px; }
+.bar-col { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; flex: 1; height: 100%; min-width: 0; }
+.bar-val { font-size: 0.68em; color: var(--dy-muted); margin-bottom: 3px; white-space: nowrap; }
+.bar {
+  width: 70%;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(180deg, var(--dy-gold-hi), #8a5a12);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+.bar.hot { background: linear-gradient(180deg, #e05840, #7a2416); }
+.bar-lab { margin-top: 6px; font-size: 0.72em; color: var(--dy-muted); white-space: nowrap; }
+.bar-lab.hot { color: #e88a76; }
+
+.footnote { font-size: 0.72em; color: var(--dy-muted); }
+
+.dy-mute { color: var(--dy-muted); }
+.dy-ok { color: var(--dy-green); }
+.dy-bad { color: #e88a76; }
+
+/* SKU 表：固定列宽防折行 */
+.slidev-page .sku table { table-layout: fixed; }
+.slidev-page .sku th:first-child, .slidev-page .sku td:first-child { width: 23%; }
+.slidev-page .sku th:nth-child(2), .slidev-page .sku td:nth-child(2) { width: 11%; white-space: nowrap; }
+
+/* 紧凑表格页 */
+.slidev-page .compact th, .slidev-page .compact td { padding: 3px 9px; }
+
+/* ===== 幕间大字过渡页 ===== */
+.slidev-layout.divider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dy-divider {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+}
+
+.dy-part-no {
+  font-family: 'STZhongsong', 'KaiTi', 'SimSun', serif;
+  font-size: 11em;
+  line-height: 1;
+  font-weight: 700;
+  color: rgba(240, 180, 65, 0.14);
+  text-shadow: 0 0 60px rgba(240, 180, 65, 0.08);
+}
+
+.dy-part-rule {
+  width: 2px;
+  align-self: stretch;
+  background: linear-gradient(180deg, transparent, var(--dy-line) 30%, var(--dy-line) 70%, transparent);
+}
+
+.dy-part-label {
+  font-size: 0.85em;
+  letter-spacing: 0.34em;
+  color: var(--dy-muted);
+  margin-bottom: 14px;
+}
+
+.dy-part-title {
+  font-family: 'STZhongsong', 'KaiTi', serif;
+  font-size: 3.6em;
+  line-height: 1.2;
+  color: var(--dy-gold);
+  font-weight: 700;
+}
+
+.dy-part-sub {
+  margin-top: 16px;
+  font-size: 1.02em;
+  color: var(--dy-cream);
+  opacity: 0.85;
+}
+
+.dy-part-progress {
+  display: flex;
+  gap: 14px;
+  margin-top: 56px;
+}
+.dy-part-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--dy-line);
+  border-radius: 999px;
+  padding: 5px 16px;
+  font-size: 0.8em;
+  color: var(--dy-muted);
+}
+.dy-part-step.now {
+  color: var(--dy-bg);
+  background: var(--dy-gold);
+  border-color: var(--dy-gold);
+  font-weight: 600;
+}

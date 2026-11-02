@@ -1,662 +1,681 @@
 ---
-# try also 'default' to start simple
-theme: seriph
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
-# some information about your slides (markdown enabled)
-title: Welcome to Slidev
-info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
-# apply UnoCSS classes to the current slide
-class: text-center
-# https://sli.dev/features/drawing
+theme: default
+layout: cover
+title: 月饼出炉 · 御牌坊
+info: 《叫我万岁爷》中秋限时 7 日商业化活动玩法 — AI 游戏工坊参赛作品
+transition: slide-left
+slideNumber: true
+fonts:
+  webfonts: []
 drawings:
   persist: false
-# slide transition: https://sli.dev/guide/animations.html#slide-transitions
-transition: slide-left
-# enable Comark Syntax: https://comark.dev/syntax/markdown
-comark: true
-# duration of the presentation
-duration: 35min
 ---
 
-# Welcome to Slidev
+<div class="dy-moon"></div>
+<div class="dy-cloud"></div>
 
-Presentation slides for developers
+<div class="kicker">点触科技 × 厦门理工 · AI 游戏工坊</div>
 
-<div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
-  Press Space for next page <carbon:arrow-right />
+# 月饼出炉 · 御牌坊
+
+<div class="cover-sub" style="font-size:1.05em; color:var(--dy-cream); margin-top:10px;">
+《叫我万岁爷》中秋限时 7 日商业化活动玩法<br>
 </div>
 
-<div class="abs-br m-6 text-xl">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="slidev-icon-btn">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" class="slidev-icon-btn">
-    <carbon:logo-github />
-  </a>
+<div class="abs-br m-6" style="text-align:right;">
+  <div class="seal" style="font-size:1.08em; line-height:1.4; padding:8px 16px;">少年<br>先疯队</div>
 </div>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
-
 ---
-transition: fade-out
+layout: default
 ---
 
-# What is Slidev?
+<div class="kicker">今天讲三件事</div>
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
+# 三幕
 
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - themes can be shared and re-used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embed Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
-<br>
-<br>
+<div style="margin-top:24px;">
 
-Read more about [Why Slidev?](https://sli.dev/guide/why)
+<div class="agenda-row">
+  <span class="agenda-no">壹</span>
+  <span class="agenda-title">游戏介绍</span>
+  <span class="agenda-note">一局怎么玩，为什么好玩</span>
+</div>
 
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/features/slide-scope-style
--->
+<div class="agenda-row">
+  <span class="agenda-no">贰</span>
+  <span class="agenda-title">对照交卷</span>
+  <span class="agenda-note">核对命题要求</span>
+</div>
 
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
+<div class="agenda-row" style="border-bottom:none;">
+  <span class="agenda-no">叁</span>
+  <span class="agenda-title">AI 分享</span>
+  <span class="agenda-note">git 工作流 · AI 分享 · 三次探索</span>
+</div>
 
-<!--
-Here is another comment.
--->
+</div>
 
 ---
-transition: slide-up
-level: 2
+layout: default
+class: divider
 ---
 
-# Navigation
+<div class="dy-divider">
+  <div class="dy-part-no">壹</div>
+  <div class="dy-part-rule"></div>
+  <div>
+    <div class="dy-part-label">PART 1 · 第一幕</div>
+    <div class="dy-part-title">游戏总览</div>
+    <div class="dy-part-sub">万岁爷，月饼出炉了，咱们开始赚钱啦！</div>
+  </div>
+</div>
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/ui#navigation-bar)
-
-## Keyboard Shortcuts
-
-|                                                     |                             |
-| --------------------------------------------------- | --------------------------- |
-| <kbd>right</kbd> / <kbd>space</kbd>                 | next animation or slide     |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd>                                       | previous slide              |
-| <kbd>down</kbd>                                     | next slide                  |
-
-<!-- https://sli.dev/guide/animations.html#click-animation -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+<div class="dy-part-progress">
+  <span class="dy-part-step now">壹 · 游戏总览</span>
+  <span class="dy-part-step">贰 · 对照交卷</span>
+  <span class="dy-part-step">叁 · AI 分享</span>
+</div>
 
 ---
-layout: two-cols
-layoutClass: gap-16
+layout: default
 ---
 
-# Table of contents
+<div class="kicker">PART 1 · 游戏总览</div>
 
-You can use the `Toc` component to generate a table of contents for your slides:
+# 故事逻辑
 
-```html
-<Toc minDepth="1" maxDepth="1" />
-```
+<div class="grid grid-cols-[1fr_2.0fr] gap-10 items-center">
 
-The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
-
-::right::
-
-<Toc text-sm minDepth="1" maxDepth="2" />
-
----
-layout: image-right
-image: https://cover.sli.dev
----
-
-# Code
-
-Use code snippets and get the highlighting directly, and even types hover!
-
-```ts [filename-example.ts] {all|4|6|6-7|9|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-import { computed, ref } from 'vue'
-
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
-
-doubled.value = 2
-```
-
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="342" color="#953" width="2" arrowSize="1" />
-
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
-
-<!-- Footer -->
-
-[Learn more](https://sli.dev/features/line-highlighting)
-
-<!-- Inline style -->
-<style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
-<!--
-Notes can also sync with clicks
-
-[click] This will be highlighted after the first click
-
-[click] Highlighted with `count = ref(0)`
-
-[click:3] Last click (skip two clicks)
--->
-
----
-level: 2
----
-
-# Shiki Magic Move
-
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
-
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
-
-````md magic-move {lines: true}
-```ts {*|2|*}
-// step 1
-const author = reactive({
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
-```
-
-```ts {*|1-2|3-4|3-4,8}
-// step 2
-export default {
-  data() {
-    return {
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
-      }
-    }
-  }
-}
-```
-
-```ts
-// step 3
-export default {
-  data: () => ({
-    author: {
-      name: 'John Doe',
-      books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
-      ]
-    }
-  })
-}
-```
-
-Non-code blocks are ignored.
-
-```vue
-<!-- step 4 -->
-<script setup>
-const author = {
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-}
-</script>
-```
-````
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
 <div>
 
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>`, `<BlueSky/>`, and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
+<p style="margin-top:14px;">你是万岁爷，开一间<strong>御膳月饼坊</strong></p>
+<p style="margin-top:14px;">用<strong>肉鸽卡牌</strong>组牌生产、经营销售</p>
+<p class="dy-mute" style="margin-top:14px; font-size:.92em;">一关 15 分钟 · 共 7 关</p>
 
 </div>
+
 <div>
 
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
+<div style="width:100%;">
+  <img src="/images/story.png" style="width:100%;">
+</div>
+<div class="g-cap">最初的手绘设计稿</div>
 
 </div>
-</div>
-
-<!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
--->
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/guide/theme-addon#use-theme) and
-check out the [Awesome Themes Gallery](https://sli.dev/resources/theme-gallery).
-
----
-
-# Clicks Animations
-
-You can add `v-click` to elements to add a click animation.
-
-<div v-click>
-
-This shows up when you press <kbd>space</kbd> or <kbd>right</kbd>, or click outside the slide on the right.
-
-```html
-<div v-click>This shows up when you trigger a click animation.</div>
-```
-
-</div>
-
-<p v-click>
-You can also add modifiers to change the animation:
-</p>
-
-<div class="grid gap-3 mt-4 text-sm" style="grid-template-columns: repeat(3, 1fr) 1.5fr 1fr">
-  <div v-after.up class="p-3 rounded border border-primary/20 bg-primary/10">
-    <div class="font-mono text-xs opacity-60 mb-1">v-click.up</div>
-    <div>Slide from bottom</div>
-  </div>
-  <div v-click.fade-in class="p-3 rounded border border-primary/30 bg-primary/15">
-    <div class="font-mono text-xs opacity-60 mb-1">v-click.fade-in</div>
-    <div>Fade in</div>
-  </div>
-  <div v-click.fade class="p-3 rounded border border-primary/40 bg-primary/20">
-    <div class="font-mono text-xs opacity-60 mb-1">v-click.fade</div>
-    <div>Dim (0.5 opacity)</div>
-  </div>
-  <div v-click.fade.right.scale class="p-3 rounded border border-primary/50 bg-primary/25">
-    <div class="font-mono text-xs opacity-60 mb-1">v-click.fade.right.scale</div>
-    <div>Composed</div>
-  </div>
-  <div v-click.none class="p-3 rounded border border-primary/60 bg-primary/30">
-    <div class="font-mono text-xs opacity-60 mb-1">v-click.none</div>
-    <div>No transition</div>
-  </div>
-</div>
-
-<v-click>
-
-The <span v-mark.red="7"><code>v-mark</code> directive</span>
-also allows you to add
-<span v-mark.circle.orange="8">inline marks</span>
-, powered by [Rough Notation](https://roughnotation.com/):
-
-```html
-<span v-mark.underline.orange>inline markers</span>
-```
-
-</v-click>
-
-<div v-click mt-12>
-
-[Learn more](https://sli.dev/guide/animations#click-animation)
 
 </div>
 
 ---
+layout: default
+---
 
-# Motions
+<div class="kicker">PART 1 · 游戏总览</div>
 
-Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
+# 一局怎么玩
 
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }"
-  :click-3="{ x: 80 }"
-  :leave="{ x: 1000 }"
->
-  Slidev
+<div class="grid grid-cols-[0.8fr_2.0fr] gap-6 items-center">
+
+<div>
+
+<p>1. 摸牌 8 张</p>
+<p style="margin-top:10px;">2. 凑配方，生产<strong>开炉</strong></p>
+<p style="margin-top:10px;">3. 挂订单，吃<strong>营收</strong></p>
+<p style="margin-top:10px;">4. 赚足银两</p>
+<p style="margin-top:10px;">5. <strong>朝会</strong>采购扩张</p>
+
 </div>
-```
 
-<div class="w-60 relative">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-square.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-circle.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-triangle.png"
-      alt=""
-    />
+<div>
+
+<div class="film">
+    <img src="/images/oven.png" style="object-position:center;">
+</div>
+<div class="dy-shotcap">手牌 · 烤炉 · 订单</div>
+
+</div>
+
+</div>
+
+---
+layout: default
+---
+
+<div class="kicker">PART 1 · 游戏总览</div>
+
+# 要赢就得找倍率
+
+<div class="grid grid-cols-[0.8fr_2.0fr] gap-6 items-center">
+
+<div>
+
+<p>一炉收入</p>
+<p>1. 基准牌型，凑谁？弃谁？</p>
+<p style="margin-top:10px;">2. 蓝图buff，<strong>镇坊叠乘</strong></p>
+<p style="margin-top:10px;">3. 订单，吃<strong>倍率</strong></p>
+<p style="margin-top:10px;">4. 稀有度<strong>倍率</strong></p>
+<p style="margin-top:10px;">5. 连击<strong>倍率</strong></p>
+
+</div>
+
+<div>
+
+<div class="film">
+  <img src="/images/oven.png" style="object-position:center;">
+</div>
+<div class="dy-shotcap">基准 · 倍率</div>
+
+</div>
+
+</div>
+
+---
+layout: default
+---
+
+<div class="kicker">PART 1 · 游戏总览</div>
+
+# 生产端消费端的经营
+
+<div class="grid grid-cols-[0.8fr_2.2fr] gap-6 items-center">
+
+<div>
+
+<p><strong>商业契约</strong> - 及时拒单 / 流单</p>
+<p style="margin-top:12px;"><strong>市场萎靡</strong> - 没有高质量订单</p>
+<p style="margin-top:12px;"><strong>对待员工</strong> - SAN</p>
+
+</div>
+
+<div>
+
+<div class="film">
+    <img src="/images/game-top-employer.png" style="object-position:center;">
+</div>
+<div class="dy-shotcap">杰出雇主受赏</div>
+
+</div>
+
+</div>
+
+---
+layout: default
+---
+
+<div class="kicker">PART 1 · 游戏总览</div>
+
+# 关卡策划 & 渐进式披露
+
+<div style="display:grid; grid-template-columns:6fr 4fr; gap:40px; align-items:center;">
+
+  <div>
+    <div class="bars" style="height:318px; gap:10px; margin-top:18px;">
+      <div class="bar-col"><div class="bar-val">200</div><div class="bar" style="height:15px;"></div><div class="bar-lab">关1 新手适应</div></div>
+      <div class="bar-col"><div class="bar-val">350</div><div class="bar" style="height:21px;"></div><div class="bar-lab">关2</div></div>
+      <div class="bar-col"><div class="bar-val">2000</div><div class="bar hot" style="height:50px;"></div><div class="bar-lab hot">关3 天价违约金</div></div>
+      <div class="bar-col"><div class="bar-val">1200</div><div class="bar" style="height:39px;"></div><div class="bar-lab">关4</div></div>
+      <div class="bar-col"><div class="bar-val">5000</div><div class="bar hot" style="height:82px;"></div><div class="bar-lab hot">关5 巨大火耗</div></div>
+      <div class="bar-col"><div class="bar-val">1600</div><div class="bar" style="height:44px;"></div><div class="bar-lab">关6</div></div>
+      <div class="bar-col"><div class="bar-val">9000</div><div class="bar hot" style="height:304px;"></div><div class="bar-lab hot">关7 巨额营收目标</div></div>
+    </div>
+    <div class="footnote" style="margin-top:8px;">圣旨目标（银）· 红色 = 大日</div>
   </div>
 
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
+  <div>
+    <img src="/images/yq.jpg" style="width:100%; display:block;">
+  </div>
+
+</div>
+
+---
+layout: default
+class: divider
+---
+
+<div class="dy-divider">
+  <div class="dy-part-no">贰</div>
+  <div class="dy-part-rule"></div>
+  <div>
+    <div class="dy-part-label">PART 2 · 第二幕</div>
+    <div class="dy-part-title">对照题目讲游戏</div>
+    <div class="dy-part-sub">命题要求，是最好的提示</div>
   </div>
 </div>
 
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
+<div class="dy-part-progress">
+  <span class="dy-part-step">壹 · 游戏总览</span>
+  <span class="dy-part-step now">贰 · 对照交卷</span>
+  <span class="dy-part-step">叁 · AI 分享</span>
+</div>
 
-<div
-  v-motion
-  :initial="{ x:35, y: 30, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
+---
+layout: default
+class: bigstage
+---
 
-[Learn more](https://sli.dev/guide/animations.html#motion)
+<div class="kicker">PART 2 · 命题原文</div>
+
+<div class="bigstage">
+
+<div class="stage-huge">「以中国传统节日为灵感，为《叫我万岁爷》设计限时 7 日的商业化活动玩法，用 AI 完成可玩原型。」</div>
+
+<div class="stage-sub" style="display:flex; gap:34px; font-size:1.05em;">
+  <span>商业化</span><span>榜单</span><span>7日</span><span>万岁爷 & 传统节日</span><span></span>
+</div>
+<div class="stage-sub" style="display:flex; gap:34px; font-size:1.05em;">
+  <span>玩法创意40%</span><span>AI工具30%</span><span>作品完整20%</span><span>美术包装10%</span>
+</div>
 
 </div>
 
 ---
-
-# $\LaTeX$
-
-$\LaTeX$ is supported out-of-box. Powered by [$\KaTeX$](https://katex.org/).
-
-<div h-3 />
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$ {1|3|all}
-\begin{aligned}
-\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \\
-\nabla \cdot \vec{B} &= 0 \\
-\nabla \times \vec{E} &= -\frac{\partial\vec{B}}{\partial t} \\
-\nabla \times \vec{B} &= \mu_0\vec{J} + \mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t}
-\end{aligned}
-$$
-
-[Learn more](https://sli.dev/features/latex)
-
+layout: default
+class: sku
 ---
 
-# Diagrams
+<div class="kicker">PART 2 · 商业化</div>
 
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
+# 福安的私货：付费对赌
 
-<div class="grid grid-cols-4 gap-5 pt-4 -mb-6">
+<div class="grid grid-cols-[1fr_2.0fr] gap-10 items-center">
 
-```mermaid {scale: 0.5, alt: 'A simple sequence diagram'}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
+<div>
 
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
+| SKU | 价格 | 效果|
+| --- | --- | --- |
+| 开炉卡 | ¥6 | 55% 加一炉 / <span class="dy-bad">15% 炸炉</span> |
+| 工作点 | ¥3 | +8 工 / <span class="dy-bad">副作用</span> |
+| 焚牌 | ¥2 | 炸炉时半数原料回手 |
 
-```mermaid
-mindmap
-  root((mindmap))
-    Origins
-      Long history
-      ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectiveness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
-      Mermaid
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
+<p style="margin-top:16px; font-size:1.05em;"><strong>买方差，不买胜率</strong></p>
+<p class="dy-mute" style="margin-top:6px; font-size:.9em;">售卖对象，对局核心资源，非数值直购</p>
 
 </div>
 
-Learn more: [Mermaid Diagrams](https://sli.dev/features/mermaid) and [PlantUML Diagrams](https://sli.dev/features/plantuml)
+<div>
+
+<div style="width:100%;">
+  <img src="/images/shop.png" style="width:100%;">
+</div>
+<div class="g-cap">游戏内商铺 · 模拟支付</div>
+
+</div>
+
+</div>
 
 ---
-foo: bar
-dragPos:
-  square: 691,32,167,_,-16
+layout: default
+class: compact
 ---
 
-# Draggable Elements
+<div class="kicker">PART 2 · 榜单</div>
 
-Double-click on the draggable elements to edit their positions.
+# 五张分榜，五种上榜理由
 
-<br>
+<div class="grid grid-cols-[1fr_1.6fr] gap-10 items-center">
 
-###### Directive Usage
+<div>
 
-```md
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-```
+| 分榜 | 口径 |
+| --- | --- |
+| 💰 资产巅峰 | 峰值银库 |
+| 🔥 开炉大师 | 开炉数 |
+| 🧧 售卖大师 | 卖出件数 |
+| 🛡️ 最佳雇主 | 稽查嘉奖 |
+| 🚩 关卡大师 | 最远关 · 先到在前 |
 
-<br>
+<p class="dy-mute" style="margin-top:12px; font-size:.88em;">重氪、肝帝、欧皇、佛系都有榜上理由</p>
 
-###### Component Usage
+</div>
 
-```md
-<v-drag text-3xl>
-  <div class="i-carbon:arrow-up" />
-  Use the `v-drag` component to have a draggable container!
-</v-drag>
-```
+<div>
 
-<v-drag pos="663,206,261,_,-15">
-  <div text-center text-3xl border border-main rounded>
-    Double-click me!
+<div style="width:100%;">
+  <img src="/images/board.jpg" style="width:100%; display:block;">
+</div>
+<div class="g-cap">功劳簿：云端实时五榜，邮箱登录留名</div>
+
+</div>
+
+</div>
+
+---
+layout: default
+---
+
+<div class="kicker">PART 2 · 游戏贴合</div>
+
+# 贴着《叫我万岁爷》做活动
+
+<div class="grid grid-cols-[0.8fr_1.0fr] gap-6 items-center">
+
+<div>
+
+<p>1. 月饼坊</p>
+<p style="margin-top:10px;">2. 宫女/太监 忠臣/奸臣</p>
+<p style="margin-top:10px;">3. 银两</p>
+<p style="margin-top:10px;">4. 朝会</p>
+<p style="margin-top:10px;">5. 节日催贡/天价违约金</p>
+
+</div>
+
+<div>
+
+<div class="film">
+  <img src="/images/7day.jpg" style="object-position:center;">
+</div>
+<div class="dy-shotcap">7 天策划</div>
+
+</div>
+
+</div>
+
+---
+layout: default
+---
+
+<div class="kicker">PART 2 · 完整度与素材合规</div>
+
+# 一台完整能跑的活动机器
+
+<div class="grid grid-cols-[1.35fr_3fr] gap-10 items-center">
+
+<div class="grid grid-cols-1 gap-x-8 gap-y-2" style="font-size:.95em;">
+
+<p><span class="dy-ok">✓</span> 回合制引擎 + 自动存档</p>
+<p><span class="dy-ok">✓</span> 云端五榜 + 邮箱登录</p>
+<p><span class="dy-ok">✓</span> 模拟支付商铺</p>
+<p><span class="dy-ok">✓</span> 新手引导 · 图鉴 · 战绩簿</p>
+<p><span class="dy-ok">✓</span> 全屏演出与音效体系</p>
+<p><span class="dy-ok">✓</span> BGM 热度切歌系统</p>
+
+</div>
+
+<div>
+
+<div style="width:100%;">
+  <img src="/images/ai-bgm.jpg" style="width:100%; display:block;">
+</div>
+
+</div>
+
+</div>
+
+---
+layout: default
+class: divider
+---
+
+<div class="dy-divider">
+  <div class="dy-part-no">叁</div>
+  <div class="dy-part-rule"></div>
+  <div>
+    <div class="dy-part-label">PART 3 · 第三幕</div>
+    <div class="dy-part-title">AI 开发分享</div>
+    <div class="dy-part-sub">git 工作流 · 使用情况 · 三次探索 · 感悟。</div>
   </div>
-</v-drag>
+</div>
 
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-
-###### Draggable Arrow
-
-```md
-<v-drag-arrow two-way />
-```
-
-<v-drag-arrow pos="67,452,253,46" two-way op70 />
+<div class="dy-part-progress">
+  <span class="dy-part-step">壹 · 游戏总览</span>
+  <span class="dy-part-step">贰 · 对照交卷</span>
+  <span class="dy-part-step now">叁 · AI 分享</span>
+</div>
 
 ---
-src: ./pages/imported-slides.md
-hide: false
+layout: default
 ---
 
----
+<div class="kicker">PART 3 · Git 开发工作流</div>
 
-# Monaco Editor
+<div class="film" style="border-radius:12px; overflow:hidden; width:fit-content; margin:0 auto;">
+  <img src="/images/coding-git.png" style="height:365px; width:auto; display:block;">
+</div>
 
-Slidev provides built-in Monaco Editor support.
-
-Add `{monaco}` to the code block to turn it into an editor:
-
-```ts {monaco}
-import { ref } from 'vue'
-import { emptyArray } from './external'
-
-const arr = ref(emptyArray(10))
-```
-
-Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
-
-```ts {monaco-run}
-import { version } from 'vue'
-import { emptyArray, sayHello } from './external'
-
-sayHello()
-console.log(`vue ${version}`)
-console.log(emptyArray<number>(10).reduce(fib => [...fib, fib.at(-1)! + fib.at(-2)!], [1, 1]))
-```
+<p style="margin-top:10px; text-align:center; font-size:1.08em;"><strong>AI Coding</strong> - 多 branch 并行、备份回档</p>
 
 ---
-layout: center
-class: text-center
+layout: default
 ---
 
-# Learn More
+<div class="kicker">PART 3 · AI 分享</div>
 
-[Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/resources/showcases)
+# 团队对齐
 
-<PoweredBySlidev mt-10 />
+<div style="text-align:center;">
+  <div class="g-art">
+    <img src="/images/trajectory.jpg" style="height:350px; width:auto;">
+  </div>
+</div>
+
+<p style="margin-top:10px; text-align:center;" class="dy-mute">AI Coding Agent 会话分散、历史上下文难以共享与追溯？</p>
+
+---
+layout: default
+---
+
+<div class="kicker">PART 3 · AI 分享</div>
+
+# 试玩游戏 · Browser Use
+
+<div style="text-align:center;">
+  <div class="g-art">
+    <img src="/images/ai-help-brower-use.jpg" style="height:350px; width:auto;">
+  </div>
+</div>
+
+<p style="margin-top:10px; text-align:center;" class="dy-mute">AI 亲手操控真机</p>
+
+---
+layout: default
+---
+
+<div class="kicker">PART 3 · AI 分享</div>
+
+# 调数值 · 贪心 bot 自对战
+
+<div style="text-align:center;">
+  <div class="g-art">
+    <img src="/images/ai-help-bot.png" style="height:350px; width:auto;">
+  </div>
+</div>
+
+<p style="margin-top:10px; text-align:center;" class="dy-mute">selfplay 40 局压着目标曲线走——把调参变成实验</p>
+
+---
+layout: default
+---
+
+<div class="kicker">PART 3 · AI 分享</div>
+
+# 编码账单
+
+<div style="text-align:center;">
+  <div class="g-art">
+    <img src="/images/ai-coding-zcode-win.png" style="height:350px; width:auto;">
+  </div>
+</div>
+
+<p style="margin-top:10px; text-align:center;" class="dy-mute">估计账单 15 亿 token</p>
+
+---
+layout: default
+---
+
+<div class="kicker">PART 3 · AI 分享</div>
+
+# BGM · AI 生成
+
+<div style="text-align:center;">
+  <div class="g-art">
+    <img src="/images/ai-bgm.jpg" style="height:350px; width:auto;">
+  </div>
+</div>
+
+<p style="margin-top:10px; text-align:center;" class="dy-mute">逐轮改「弧形循环」——前奏柔起、中段推、尾段贴合</p>
+
+---
+layout: default
+---
+
+<div class="kicker">PART 3 · 三次探索</div>
+
+<div style="text-align:center; position:relative;">
+  <div class="g-art">
+    <img src="/images/way1-exhibit.png" style="height:400px; width:auto;">
+  </div>
+  <div class="dy-stamp" style="position:absolute; right:16%; bottom:44px;">这有什么可玩的？照着问题写答案</div>
+</div>
+
+<p style="margin-top:10px; text-align:center;" class="dy-mute">第一次：中秋御前博饼会</p>
+
+---
+layout: default
+---
+
+<div class="kicker">PART 3 · 三次探索</div>
+
+<div style="text-align:center; position:relative;">
+  <div class="g-art">
+    <img src="/images/way2-exhibit.png" style="height:400px; width:auto;">
+  </div>
+  <div class="dy-stamp" style="position:absolute; right:16%; bottom:44px;">乏善可陈</div>
+</div>
+
+<p style="margin-top:10px; text-align:center;" class="dy-mute">第二次：月圆夺嫡 · 金銮奏对 - 名臣卡牌组牌奏对 × 摄政榜</p>
+
+---
+layout: default
+---
+
+<div class="kicker">PART 3 · 三次探索</div>
+
+# 第三次探索：御制月饼坊
+
+<div class="sky">
+  <span class="w" style="left:3%; top:8px; font-size:1.45em; --o1:.95; --o2:.6; animation-duration:5s;">售卖</span>
+  <span class="w dim" style="left:15%; top:34px; font-size:1.1em; --o1:.7; --o2:.35; animation-duration:7s; animation-delay:-2s;">和面</span>
+  <span class="w" style="left:27%; top:2px; font-size:1.4em; --o1:.9; --o2:.55; animation-duration:6s; animation-delay:-3s;">烤制</span>
+  <span class="w dim" style="left:40%; top:40px; font-size:.9em; --o1:.6; --o2:.3; animation-duration:8s;">出炉</span>
+  <span class="w" style="left:52%; top:12px; font-size:1.2em; --o1:.9; --o2:.5; animation-duration:5.5s; animation-delay:-1.5s;">配方研究</span>
+  <span class="w dim" style="left:67%; top:44px; font-size:.95em; --o1:.65; --o2:.3; animation-duration:7.5s; animation-delay:-4s;">配方解锁</span>
+  <span class="w" style="left:80%; top:8px; font-size:1.1em; --o1:.85; --o2:.5; animation-duration:6.5s; animation-delay:-2.5s;">国内市场</span>
+  <span class="w dim" style="left:92%; top:44px; font-size:.85em; --o1:.6; --o2:.3; animation-duration:8s; animation-delay:-1s;">东洋</span>
+  <span class="w" style="left:6%; top:82px; font-size:1.05em; --o1:.85; --o2:.5; animation-duration:6s; animation-delay:-.8s;">订单</span>
+  <span class="w dim" style="left:20%; top:112px; font-size:.85em; --o1:.6; --o2:.3; animation-duration:7s; animation-delay:-3.5s;">西洋</span>
+  <span class="w" style="left:32%; top:74px; font-size:1.15em; --o1:.9; --o2:.55; animation-duration:5.8s; animation-delay:-2s;">种植</span>
+  <span class="w dim" style="left:45%; top:98px; font-size:.9em; --o1:.6; --o2:.3; animation-duration:8.5s;">采购</span>
+  <span class="w" style="left:58%; top:70px; font-size:1em; --o1:.85; --o2:.5; animation-duration:6.2s; animation-delay:-4.5s;">价格波动</span>
+  <span class="w" style="left:71%; top:102px; font-size:1.1em; --o1:.9; --o2:.5; animation-duration:5.2s; animation-delay:-1s;">工坊升级</span>
+  <span class="w dim" style="left:85%; top:132px; font-size:.85em; --o1:.6; --o2:.3; animation-duration:7.2s; animation-delay:-2.8s;">槽位</span>
+  <span class="w" style="left:8%; top:162px; font-size:1.15em; --o1:.9; --o2:.55; animation-duration:6.4s; animation-delay:-3.2s;">工人招募</span>
+  <span class="w dim" style="left:23%; top:192px; font-size:1em; --o1:.65; --o2:.35; animation-duration:7.4s; animation-delay:-.5s;">士气</span>
+  <span class="w dim" style="left:35%; top:166px; font-size:.85em; --o1:.6; --o2:.3; animation-duration:8.2s; animation-delay:-2.2s;">薪水</span>
+  <span class="w" style="left:45%; top:202px; font-size:1.1em; --o1:.9; --o2:.5; animation-duration:5.6s; animation-delay:-3.8s;">效率</span>
+  <span class="w" style="left:57%; top:172px; font-size:.95em; --o1:.8; --o2:.45; animation-duration:6.8s; animation-delay:-1.8s;">SAN</span>
+  <span class="w" style="left:66%; top:206px; font-size:1.25em; --o1:.95; --o2:.55; animation-duration:5.4s; animation-delay:-.6s;">事件</span>
+  <span class="w" style="left:77%; top:176px; font-size:1em; --o1:.85; --o2:.5; animation-duration:6.6s; animation-delay:-4.2s;">大臣进言</span>
+  <span class="w hot" style="left:88%; top:214px; font-size:1.4em; --o1:1; --o2:.6; animation-duration:4.8s; animation-delay:-2.4s;">大日</span>
+  <span class="w hot" style="left:61%; top:252px; font-size:1.15em; --o1:.95; --o2:.55; animation-duration:5s; animation-delay:-3.6s;">限时催贡</span>
+  <span class="w dim" style="left:30%; top:246px; font-size:.8em; --o1:.55; --o2:.28; animation-duration:9s;">馈赠</span>
+  <span class="w" style="left:44%; top:256px; font-size:.95em; --o1:.8; --o2:.45; animation-duration:6.9s; animation-delay:-1.4s;">世界速度</span>
+  <span class="w dim" style="left:10%; top:250px; font-size:.85em; --o1:.6; --o2:.3; animation-duration:7.8s; animation-delay:-4.8s;">库存</span>
+</div>
+
+<p style="margin-top:16px; font-size:1.1em;">机制很多，玩法没有</p>
+<p style="margin-top:16px; font-size:1.1em;">干湿分离，数值皮套分开</p>
+
+---
+layout: default
+---
+
+<div class="kicker">PART 3 · 三次探索</div>
+
+<div style="text-align:center; position:relative;">
+  <div class="g-art">
+    <img src="/images/way3-exhibit-sence.png" style="height:400px; width:auto;">
+  </div>
+  <div class="dy-stamp" style="position:absolute; right:16%; bottom:44px;">没法说服自己</div>
+</div>
+
+<p style="margin-top:10px; text-align:center;" class="dy-mute">机制堆砌，玩不下去</p>
+
+---
+layout: default
+---
+
+<div class="kicker">PART 3 · 三次探索</div>
+
+# 月饼经营 + 回合制卡牌 ？
+
+<div style="text-align:center;">
+  <div class="g-art">
+    <img src="/images/way4-vscode.png" style="height:380px; width:auto;">
+  </div>
+</div>
+
+---
+layout: default
+class: bigstage
+---
+
+<div class="kicker">PART 3 · 教训经验</div>
+
+<div class="bigstage">
+
+<div class="stage-huge">等待时间 = 思考时间</div>
+
+<div class="stage-sub">
+v3 机制给满，但<strong>等待时间</strong>干什么？
+</div>
+<div class="stage-sub">
+v4 回合制卡牌——「生产耗时」折算成工作量资源，屏幕上除了<strong>决策</strong>，就是<strong>思考决策</strong>
+</div>
+
+</div>
+
+---
+layout: default
+class: bigstage
+---
+
+<div class="kicker">PART 3 · 总结感悟</div>
+
+<div class="bigstage">
+
+<div class="refl"><span class="refl-no">壹</span><span class="refl-text">全程 <strong>AI 参与</strong>——玩法、代码、文案、音乐，以及这份 PPT</span></div>
+
+<div class="refl"><span class="refl-no">贰</span><span class="refl-text"><strong>AI 是干活的，方向在人</strong><span class="refl-note">每一步 AI 出方案，人拍板验收</span></span></div>
+
+<div class="refl">
+    <span class="refl-no">叁</span><span class="refl-text"><strong>MVP 阶段，用 AI 算力快速堆叠验证</strong>
+        <span class="refl-note">快速验证需求方案，系统策划、关卡策划、数值策划、美术资源、文案资源</span>
+        <span class="refl-note">代码 Review？团队内进度对齐？代码质量？</span>
+    </span>
+</div>
+
+<div class="refl"><span class="refl-no">肆</span><span class="refl-text"><strong>游戏的理解</strong><span class="refl-note">能玩得下去是首要的！游戏体验就是<strong>博弈过程</strong>中的<strong>情绪调度</strong>！</span></span></div>
+
+</div>
+
+---
+layout: default
+class: bigstage
+---
+
+<div class="kicker">在线试玩 · 已部署</div>
+
+<div class="bigstage">
+
+<div class="stage-huge" style="font-size:2.3em;">现在，就能玩</div>
+
+<div style="margin-top:26px; font-family: Consolas, 'JetBrains Mono', monospace; font-size:1.45em; color:var(--dy-gold-hi); text-shadow:0 0 26px rgba(240,180,65,.35); letter-spacing:.02em;">
+https://mooncake.plktime1043.workers.dev
+http://120.77.66.156/
+</div>
+
+</div>
+
+<div style="text-align:center;">
+  <img src="/images/aliyun.png" style="height:220px; width:auto;">
+</div>
